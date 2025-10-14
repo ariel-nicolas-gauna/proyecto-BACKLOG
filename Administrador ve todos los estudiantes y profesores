@@ -1,0 +1,28 @@
+usuarios = [
+    {"nombre": "Ana", "rol": "admin"},
+    {"nombre": "Carlos", "rol": "profesor"},
+    {"nombre": "Lucía", "rol": "profesor"},
+    {"nombre": "Juan", "rol": "estudiante"},
+    {"nombre": "Marta", "rol": "estudiante"}
+]
+
+nombre = input("Ingrese su nombre: ")
+
+usuario = None
+for u in usuarios:
+    if u["nombre"].lower() == nombre.lower():
+        usuario = u
+        break
+
+if usuario is None:
+    print("Usuario no encontrado.")
+else:
+    print(f"\nBienvenido {usuario['nombre']} ({usuario['rol']})")
+
+    if usuario["rol"] == "admin":
+        print("\nLista completa de profesores y estudiantes:")
+        for u in usuarios:
+            if u["rol"] in ["profesor", "estudiante"]:
+                print(f"- {u['nombre']} ({u['rol']})")
+    else:
+        print("\nNo tiene permiso para ver la lista completa.")
