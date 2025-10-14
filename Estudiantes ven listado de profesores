@@ -1,0 +1,19 @@
+profesores = [
+    {"nombre": "Laura Gómez", "materia": "Matemática"},
+    {"nombre": "Juan Pérez", "materia": "Historia"},
+    {"nombre": "Ana Torres", "materia": "Biología"},
+    {"nombre": "Carlos Díaz", "materia": "Programación"}
+]
+
+while True:
+    print("\n1. Ver profesores\n2. Salir")
+    opcion = input("Elegí una opción: ")
+
+    if opcion == "1":
+        for p in profesores:
+            print(f"{p['nombre']} - {p['materia']}")
+    elif opcion == "2":
+        print("¡Hasta luego!")
+        break
+    else:
+        print("Opción no válida.")
