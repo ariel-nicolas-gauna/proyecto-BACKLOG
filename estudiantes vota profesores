@@ -1,0 +1,50 @@
+datos_votos = []
+estudiantes = ['Ariel', 'Camilo', 'Gonzalo']
+profesores = ['Gallego','Carden','Perez']
+
+def votar(estudiante, profesor):
+    if estudiante == profesor:
+        return "No puedes votarte a ti mismo."
+    voto = {'estudiante': estudiante, 'profesor': profesor}
+    if voto in datos_votos:
+        return "Ya votaste a este profesor."
+    datos_votos.append(voto)
+    return f"{estudiante} votó a {profesor} correctamente."
+
+def mostrar_votos():
+    if not datos_votos:
+        print("No hay votos registrados aún.")
+        return
+    print("\nListado de votos:")
+    for v in datos_votos:
+        print(f"{v['estudiante']} → {v['profesor']}")
+
+def menu():
+    print("Estudiantes disponibles:", ", ".join(estudiantes))
+    estudiante = input("Ingresa tu nombre de estudiante: ").strip()
+    if estudiante not in estudiantes:
+        print("Estudiante no válido.")
+        return
+    print("Profesores disponibles:", ", ".join(profesores))
+    profesor = input("Elige un profesor para votar: ").strip()
+    if profesor not in profesores:
+        print("Profesor no válido.")
+        return
+    print(votar(estudiante, profesor))
+
+while True:
+    print("\n--- Sistema de Votación ---")
+    print("1. Votar")
+    print("2. Mostrar votos")
+    print("3. Salir")
+    opcion = input("Elige una opción: ").strip()
+    if opcion == '1':
+        menu()
+    elif opcion == '2':
+        mostrar_votos()
+    elif opcion == '3':
+        print("Saliendo")
+        break
+    else:
+        print("Opción no válida.")
+
